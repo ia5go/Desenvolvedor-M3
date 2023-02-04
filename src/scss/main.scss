@@ -1,1 +1,87 @@
 @import "reset";
+//VARIABLES
+$theme-gray1: #666666;
+$theme-gray2: #00000080;
+$theme-lightblue: #00c0ee;
+$roboto: "Roboto", sans-serif;
+$open-sans: "Open Sans", sans-serif;
+//MIXINS
+@mixin dflex(
+  $flex-direction: row,
+  $justify-content: start,
+  $align-items: stretch
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+//DEFAULT
+body {
+  width: 100vw;
+  height: auto;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.wrap {
+  @include dflex();
+  width: 95%;
+  max-width: 1175px;
+  margin: 0 auto;
+}
+//HEADER
+.header {
+  border-bottom: #c7c7c7 solid 1px;
+  padding: 16px 0;
+  .wrap {
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    height: 30px;
+    width: auto;
+  }
+}
+.bag {
+  position: relative;
+  height: 20px;
+  width: 17px;
+  &__icon {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  &__counter {
+    @include dflex(row, center, center);
+    height: 12px;
+    width: 12px;
+    background-color: $theme-lightblue;
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    z-index: 2;
+    border-radius: 50%;
+    font-family: $roboto;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+  }
+}
+//FOOTER
+.footer {
+  @include dflex(row, center, center);
+  background-color: #000000;
+  padding: 7px 0;
+  &__text {
+    font-family: $open-sans;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #ffffff;
+    text-align: center;
+  }
+}
+//MAIN
