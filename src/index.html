@@ -34,9 +34,335 @@
 
     <main class="main">
       <div class="main__top">
-        <h1 class="title">Blusas</h1>
+        <div class="wrap">
+          <h1 class="title">Blusas</h1>
 
-        <select name="" id=""></select>
+          <select class="order-by">
+            <option class="order-by__item" selected disabled>
+              Ordenar por:
+            </option>
+            <option class="order-by__item" value="RECENT">Mais recente</option>
+            <option class="order-by__item" value="S_PRICE">Menor preço</option>
+            <option class="order-by__item" value="B_PRICE">Maior preço</option>
+          </select>
+
+          <div class="mobile-triggers">
+            <button
+              class="mobile-triggers__item btn--transparent"
+              data-target="mobile-filter"
+            >
+              Filtrar
+            </button>
+            <button
+              class="mobile-triggers__item btn--transparent"
+              data-target="mobile-orderby"
+            >
+              Ordernar
+            </button>
+          </div>
+
+          <div class="mobile-sidebar" id="mobile-orderby">
+            <div class="mobile-sidebar__top">
+              <h3 class="mobile-sidebar__title">ORDERNAR</h3>
+            </div>
+
+            <div class="mobile-sidebar__content">
+              <ul class="mobile-sidebar__sortby">
+                <li class="mobile-sidebar__item">
+                  <button data-sortby="RECENT">Mais recente</button>
+                </li>
+                <li class="mobile-sidebar__item">
+                  <button data-sortby="B_PRICE">Maior preço</button>
+                </li>
+                <li class="mobile-sidebar__item">
+                  <button data-sortby="S_PRICE">Menor preço</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mobile-sidebar" id="mobile-filter">
+            <div class="mobile-sidebar__top">
+              <h3 class="mobile-sidebar__title">Filtrar</h3>
+            </div>
+
+            <div class="mobile-sidebar__content">
+              <div class="mobile-sidebar__filter">
+                <details>
+                  <summary class="mobile-sidebar__summary">
+                    <h3 class="filter__title">CORES</h3>
+                  </summary>
+
+                  <ul class="filter__list">
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input
+                          type="radio"
+                          name="filterColor"
+                          value="Amarelo"
+                        />
+                        Amarelo
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="filterColor" value="Azul" />
+                        Azul
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="filterColor" value="Branco" />
+                        Branco
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="filterColor" value="Cinza" />
+                        Cinza
+                      </label>
+                    </li>
+                  </ul>
+                </details>
+
+                <details>
+                  <summary class="mobile-sidebar__summary">
+                    <h3 class="filter__title">TAMANOS</h3>
+                  </summary>
+
+                  <ul class="filter__list--row">
+                    <li class="filter__list--row__item">
+                      <button type="button">P</button>
+                    </li>
+                    <li class="filter__list--row__item">
+                      <button type="button" class="active">M</button>
+                    </li>
+                    <li class="filter__list--row__item">
+                      <button type="button">G</button>
+                    </li>
+                    <li class="filter__list--row__item">
+                      <button type="button">GG</button>
+                    </li>
+                    <li class="filter__list--row__item">
+                      <button type="button">U</button>
+                    </li>
+                  </ul>
+                </details>
+
+                <details>
+                  <summary class="mobile-sidebar__summary">
+                    <h3 class="filter__title">FAIXA DE PREÇO</h3>
+                  </summary>
+
+                  <ul class="filter__list">
+                    <!-- TODO: A IDEIA AQUI É TER UM [] DE RANGES E ASSOCIAR CADA RADIOBOX COM UM DELES PELO INDEX A PARTIR DO VALOR DESSE INPUT -->
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="priceRange" value="0" />
+                        de R$0 até R$50
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="priceRange" value="1" />
+                        de R$51 até R$150
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="priceRange" value="2" />
+                        de R$151 até R$300
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="priceRange" value="3" />
+                        de R$301 até R$500
+                      </label>
+                    </li>
+                    <li class="filter__list__item">
+                      <label class="filter__label">
+                        <input type="radio" name="priceRange" value="4" />
+                        a partir de R$500
+                      </label>
+                    </li>
+                  </ul>
+                </details>
+              </div>
+
+              <div class="mobile-sidebar__actions">
+                <button class="mobile-sidebar__actions__item applay btn--blue">
+                  Aplicar
+                </button>
+                <button
+                  class="mobile-sidebar__actions__item clean btn--transparent"
+                >
+                  Limpar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main__content">
+        <div class="wrap">
+          <nav class="filter">
+            <h3 class="filter__title">CORES</h3>
+
+            <ul class="filter__list">
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="filterColor" value="Amarelo" />
+                  Amarelo
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="filterColor" value="Azul" /> Azul
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="filterColor" value="Branco" />
+                  Branco
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="filterColor" value="Cinza" /> Cinza
+                </label>
+              </li>
+            </ul>
+
+            <h3 class="filter__title">TAMANOS</h3>
+
+            <ul class="filter__list--row">
+              <li class="filter__list--row__item">
+                <button type="button">P</button>
+              </li>
+              <li class="filter__list--row__item">
+                <button type="button" class="active">M</button>
+              </li>
+              <li class="filter__list--row__item">
+                <button type="button">G</button>
+              </li>
+              <li class="filter__list--row__item">
+                <button type="button">GG</button>
+              </li>
+              <li class="filter__list--row__item">
+                <button type="button">U</button>
+              </li>
+            </ul>
+
+            <h3 class="filter__title">FAIXA DE PREÇO</h3>
+
+            <ul class="filter__list">
+              <!-- TODO: A IDEIA AQUI É TER UM [] DE RANGES E ASSOCIAR CADA RADIOBOX COM UM DELES PELO INDEX A PARTIR DO VALOR DESSE INPUT -->
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="priceRange" value="0" />
+                  de R$0 até R$50
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="priceRange" value="1" />
+                  de R$51 até R$150
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="priceRange" value="2" />
+                  de R$151 até R$300
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="priceRange" value="3" />
+                  de R$301 até R$500
+                </label>
+              </li>
+              <li class="filter__list__item">
+                <label class="filter__label">
+                  <input type="radio" name="priceRange" value="4" />
+                  a partir de R$500
+                </label>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="main__prods-load">
+            <div class="main__products">
+              <div class="product">
+                <img
+                  src="img/img_2.png"
+                  alt="[nome do item]"
+                  class="product__image"
+                />
+
+                <p class="product__name">Camiseta Mescla</p>
+                <p class="product__price">R$ 28,00</p>
+                <p class="product__price--divided">até 3x de R$9,33</p>
+                <button class="product__action btn--black">COMPRAR</button>
+              </div>
+
+              <div class="product">
+                <img
+                  src="img/img_2.png"
+                  alt="[nome do item]"
+                  class="product__image"
+                />
+
+                <p class="product__name">Camiseta Mescla</p>
+                <p class="product__price">R$ 28,00</p>
+                <p class="product__price--divided">até 3x de R$9,33</p>
+                <button class="product__action btn--black">COMPRAR</button>
+              </div>
+
+              <div class="product">
+                <img
+                  src="img/img_2.png"
+                  alt="[nome do item]"
+                  class="product__image"
+                />
+
+                <p class="product__name">Camiseta Mescla</p>
+                <p class="product__price">R$ 28,00</p>
+                <p class="product__price--divided">até 3x de R$9,33</p>
+                <button class="product__action btn--black">COMPRAR</button>
+              </div>
+
+              <div class="product">
+                <img
+                  src="img/img_2.png"
+                  alt="[nome do item]"
+                  class="product__image"
+                />
+
+                <p class="product__name">Camiseta Mescla</p>
+                <p class="product__price">R$ 28,00</p>
+                <p class="product__price--divided">até 3x de R$9,33</p>
+                <button class="product__action btn--black">COMPRAR</button>
+              </div>
+
+              <div class="product">
+                <img
+                  src="img/img_2.png"
+                  alt="[nome do item]"
+                  class="product__image"
+                />
+
+                <p class="product__name">Camiseta Mescla</p>
+                <p class="product__price">R$ 28,00</p>
+                <p class="product__price--divided">até 3x de R$9,33</p>
+                <button class="product__action btn--black">COMPRAR</button>
+              </div>
+            </div>
+
+            <button class="main__load-products btn--blue">carregar mais</button>
+          </div>
+        </div>
       </div>
     </main>
 

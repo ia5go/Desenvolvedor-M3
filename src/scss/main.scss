@@ -6,6 +6,22 @@ $theme-lightblue: #00c0ee;
 $roboto: "Roboto", sans-serif;
 $open-sans: "Open Sans", sans-serif;
 //MIXINS
+//s000 : smaller than 000
+@mixin s540 {
+  @media screen and (max-width: 540px) {
+    @content;
+  }
+}
+@mixin s600 {
+  @media screen and (max-width: 600px) {
+    @content;
+  }
+}
+@mixin s720 {
+  @media screen and (max-width: 720px) {
+    @content;
+  }
+}
 @mixin dflex(
   $flex-direction: row,
   $justify-content: start,
@@ -20,8 +36,9 @@ $open-sans: "Open Sans", sans-serif;
 body {
   width: 100vw;
   height: auto;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #ffffff;
+  font-size: 16px;
 }
 .wrap {
   @include dflex();
@@ -63,11 +80,37 @@ body {
     z-index: 2;
     border-radius: 50%;
     font-family: $roboto;
-    font-size: 10px;
+    font-size: 0.625rem;
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
     color: #ffffff;
+  }
+}
+.btn {
+  font-family: $open-sans;
+  font-size: 0.87rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  padding: 8px 0;
+  text-transform: uppercase;
+  &--black {
+    @extend .btn;
+    background-color: #000000;
+  }
+  &--blue {
+    @extend .btn;
+    background-color: $theme-lightblue;
+  }
+  &--transparent {
+    @extend .btn;
+    color: $theme-gray1;
+    font-weight: 400;
+    background-color: transparent;
+    border: solid $theme-gray1 1px;
   }
 }
 //FOOTER
@@ -78,10 +121,283 @@ body {
   &__text {
     font-family: $open-sans;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 0.87rem;
+    line-height: 1.18rem;
     color: #ffffff;
     text-align: center;
   }
 }
 //MAIN
+.main {
+  &__top {
+    padding: 40px 0 54px 0;
+    width: 100%;
+    @include s720() {
+      padding: 24px 0 34px 0;
+    }
+    .wrap {
+      justify-content: space-between;
+      align-items: center;
+      @include s720() {
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        gap: 12px;
+      }
+    }
+  }
+  &__content {
+    .wrap {
+      justify-content: space-between;
+      align-items: start;
+    }
+    margin-bottom: 35px;
+  }
+  &__prods-load {
+    @include dflex(column, start, center);
+    width: 70%;
+    @include s720() {
+      width: 100%;
+    }
+  }
+  &__products {
+    @include dflex($align-items: start);
+    flex-wrap: wrap;
+    gap: 40px 8%;
+    margin-bottom: 70px;
+    @include s720() {
+      gap: 32px 5%;
+      margin-bottom: 55px;
+    }
+    @include s600() {
+      gap: 18px 3%;
+      margin-bottom: 40px;
+    }
+  }
+  &__load-products {
+    padding: 8px 31px;
+  }
+}
+.title {
+  font-family: $open-sans;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.69rem;
+  color: #333333;
+}
+.order-by {
+  height: 42px;
+  padding: 0 0.5rem;
+  border-color: $theme-gray2;
+  @include s720() {
+    display: none;
+  }
+  &__item {
+    padding: 0.25rem 0.5rem;
+    font-family: $open-sans;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    &:hover {
+      background-color: $theme-lightblue;
+    }
+  }
+}
+.mobile-triggers {
+  display: none;
+  width: 100%;
+  @include s720() {
+    @include dflex();
+  }
+  &__item {
+    width: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+.mobile-sidebar {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background-color: #ffffff;
+  transform: translateX(-100%);
+  transition: all ease-out 0.4s;
+  &.open {
+    transform: translateX(0);
+  }
+  @include s720() {
+    @include dflex(column, start, stretch);
+  }
+  &__top {
+    padding: 1rem;
+    border-bottom: $theme-gray1 solid 1px;
+    position: relative;
+  }
+  &__title {
+    font-family: $open-sans;
+    font-weight: 400;
+    font-size: 1.75rem;
+    color: $theme-gray1;
+    text-transform: uppercase;
+  }
+  &__content {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  &__sortby {
+    @include dflex($flex-direction: column);
+    width: 100%;
+    button {
+      font-family: $open-sans;
+      font-size: 1.37rem;
+      font-weight: 400;
+      color: #000000;
+      background-color: transparent;
+      border: none;
+      padding: 0.47rem 0;
+    }
+  }
+  &__summary {
+    display: block;
+    .filter__title {
+      font-size: 1.5rem;
+      margin-bottom: 23px;
+    }
+  }
+  &__actions {
+    @include dflex($justify-content: space-between);
+    width: 100%;
+    &__item {
+      width: calc(50% - 10px);
+    }
+  }
+  &__close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: $theme-gray2;
+  }
+}
+.filter {
+  @include dflex(column, start, start);
+  width: 160px;
+  @include s720() {
+    display: none;
+  }
+  &__title {
+    @extend .title;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin-bottom: 14px;
+  }
+  &__list {
+    @include dflex($flex-direction: column);
+    margin-bottom: 24px;
+    gap: 10px;
+    &__item {
+      label {
+        @include dflex($align-items: center);
+        gap: 10px;
+        font-family: $open-sans;
+        font-size: 0.87rem;
+        font-weight: 400;
+        line-height: 0.87rem;
+        color: #000000;
+        cursor: pointer;
+      }
+      input[type="radio"] {
+        appearance: none;
+        margin: 0;
+        border: $theme-gray2 1px solid;
+        height: 1rem;
+        width: 1rem;
+        box-shadow: inset 0 0 0 2px #ffffff;
+        &:checked {
+          background-color: $theme-lightblue;
+        }
+      }
+    }
+    &--row {
+      @extend .filter__list;
+      align-items: start;
+      justify-content: start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      &__item {
+        button {
+          @include dflex($justify-content: center, $align-items: center);
+          height: 2rem;
+          width: 2rem;
+          border: solid $theme-gray2 1px;
+          background-color: transparent;
+          font-family: $open-sans;
+          font-size: 1rem;
+          color: $theme-gray2;
+          text-align: center;
+          cursor: pointer;
+          &.active {
+            border-color: $theme-lightblue;
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+}
+.product {
+  @include dflex(column, start, center);
+  flex-wrap: wrap;
+  width: 30%;
+  max-width: 200px;
+  min-width: 161px;
+  @include s540() {
+    width: 48%;
+  }
+  &__image {
+    width: 100%;
+    height: 293px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 10px;
+    @include s600() {
+      margin-bottom: 8px;
+    }
+  }
+  &__name {
+    font-family: $open-sans;
+    font-size: 0.87rem;
+    font-weight: 400;
+    text-align: center;
+    color: #000000;
+    line-height: 1.25rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    @include s600() {
+      margin-bottom: 8px;
+    }
+  }
+  &__price {
+    @extend .product__name;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    &--divided {
+      @extend .product__name;
+      color: $theme-gray1;
+      margin-bottom: 14px;
+      @include s600() {
+        margin-bottom: 11px;
+      }
+    }
+  }
+  &__action {
+    width: 100%;
+    padding: 7px 0;
+    cursor: pointer;
+  }
+}
