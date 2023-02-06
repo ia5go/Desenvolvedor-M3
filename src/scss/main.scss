@@ -259,7 +259,7 @@ body {
     }
   }
   &__summary {
-    display: block;
+    @include dflex($justify-content: space-between, $align-items: center);
     .filter__title {
       font-size: 1.5rem;
       margin-bottom: 23px;
