@@ -27,7 +27,7 @@
             alt="Ícone de sacola de compras"
             class="bag__icon"
           />
-          <span class="bag__counter">1</span>
+          <span data-counter class="bag__counter hidden"></span>
         </div>
       </div>
     </header>
@@ -98,35 +98,8 @@
                     />
                   </summary>
 
-                  <ul class="filter__list">
-                    <li class="filter__list__item">
-                      <label class="filter__label">
-                        <input
-                          type="radio"
-                          name="filterColor"
-                          value="Amarelo"
-                        />
-                        Amarelo
-                      </label>
-                    </li>
-                    <li class="filter__list__item">
-                      <label class="filter__label">
-                        <input type="radio" name="filterColor" value="Azul" />
-                        Azul
-                      </label>
-                    </li>
-                    <li class="filter__list__item">
-                      <label class="filter__label">
-                        <input type="radio" name="filterColor" value="Branco" />
-                        Branco
-                      </label>
-                    </li>
-                    <li class="filter__list__item">
-                      <label class="filter__label">
-                        <input type="radio" name="filterColor" value="Cinza" />
-                        Cinza
-                      </label>
-                    </li>
+                  <ul class="filter__list filter__color">
+                    <!-- where color filters will be rendered -->
                   </ul>
                 </details>
 
@@ -140,22 +113,8 @@
                     />
                   </summary>
 
-                  <ul class="filter__list--row">
-                    <li class="filter__list--row__item">
-                      <button type="button">P</button>
-                    </li>
-                    <li class="filter__list--row__item">
-                      <button type="button" class="active">M</button>
-                    </li>
-                    <li class="filter__list--row__item">
-                      <button type="button">G</button>
-                    </li>
-                    <li class="filter__list--row__item">
-                      <button type="button">GG</button>
-                    </li>
-                    <li class="filter__list--row__item">
-                      <button type="button">U</button>
-                    </li>
+                  <ul class="filter__list--row filter__size">
+                    <!-- where size filters will be rendered -->
                   </ul>
                 </details>
 
@@ -169,7 +128,7 @@
                     />
                   </summary>
 
-                  <ul class="filter__list">
+                  <ul class="filter__list filter__price">
                     <!-- TODO: A IDEIA AQUI É TER UM [] DE RANGES E ASSOCIAR CADA RADIOBOX COM UM DELES PELO INDEX A PARTIR DO VALOR DESSE INPUT -->
                     <li class="filter__list__item">
                       <label class="filter__label">
@@ -210,7 +169,7 @@
                   Aplicar
                 </button>
                 <button
-                  class="mobile-sidebar__actions__item clean btn--transparent"
+                  class="mobile-sidebar__actions__item clear btn--transparent"
                 >
                   Limpar
                 </button>
@@ -225,54 +184,19 @@
           <nav class="filter">
             <h3 class="filter__title">CORES</h3>
 
-            <ul class="filter__list">
-              <li class="filter__list__item">
-                <label class="filter__label">
-                  <input type="radio" name="filterColor" value="Amarelo" />
-                  Amarelo
-                </label>
-              </li>
-              <li class="filter__list__item">
-                <label class="filter__label">
-                  <input type="radio" name="filterColor" value="Azul" /> Azul
-                </label>
-              </li>
-              <li class="filter__list__item">
-                <label class="filter__label">
-                  <input type="radio" name="filterColor" value="Branco" />
-                  Branco
-                </label>
-              </li>
-              <li class="filter__list__item">
-                <label class="filter__label">
-                  <input type="radio" name="filterColor" value="Cinza" /> Cinza
-                </label>
-              </li>
+            <ul class="filter__list filter__color">
+              <!-- where color filters will be rendered -->
             </ul>
 
             <h3 class="filter__title">TAMANOS</h3>
 
-            <ul class="filter__list--row">
-              <li class="filter__list--row__item">
-                <button type="button">P</button>
-              </li>
-              <li class="filter__list--row__item">
-                <button type="button" class="active">M</button>
-              </li>
-              <li class="filter__list--row__item">
-                <button type="button">G</button>
-              </li>
-              <li class="filter__list--row__item">
-                <button type="button">GG</button>
-              </li>
-              <li class="filter__list--row__item">
-                <button type="button">U</button>
-              </li>
+            <ul class="filter__list--row filter__size">
+              <!-- where size filters will be rendered -->
             </ul>
 
             <h3 class="filter__title">FAIXA DE PREÇO</h3>
 
-            <ul class="filter__list">
+            <ul class="filter__list filter__price">
               <!-- TODO: A IDEIA AQUI É TER UM [] DE RANGES E ASSOCIAR CADA RADIOBOX COM UM DELES PELO INDEX A PARTIR DO VALOR DESSE INPUT -->
               <li class="filter__list__item">
                 <label class="filter__label">

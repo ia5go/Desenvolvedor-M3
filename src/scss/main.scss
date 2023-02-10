@@ -71,8 +71,12 @@ body {
   }
   &__counter {
     @include dflex(row, center, center);
-    height: 12px;
-    width: 12px;
+    min-height: 12px;
+    min-width: 12px;
+    height: auto;
+    width: auto;
+    padding: 2px;
+    aspect-ratio: 1/1;
     background-color: $theme-lightblue;
     position: absolute;
     right: -3px;
@@ -85,6 +89,9 @@ body {
     text-align: center;
     vertical-align: middle;
     color: #ffffff;
+    &.hidden {
+      display: none;
+    }
   }
 }
 .btn {
@@ -163,7 +170,7 @@ body {
   &__products {
     @include dflex($align-items: start);
     flex-wrap: wrap;
-    gap: 40px 8%;
+    gap: 40px 5%;
     margin-bottom: 70px;
     @include s720() {
       gap: 32px 5%;
