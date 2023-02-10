@@ -23,6 +23,18 @@ Contato: [benvindoiago@gmail.com](mailto:benvindoiago@gmail.com?subject=Vaga%20D
 
 ---
 
+## Como usar
+
+### Instalação
+
+Este projeto necessita de dependencias para funcionar. Após baixar ou clonar esse repositório na sua máquina rode o comando `npm install`
+
+### Rodando o projeto
+
+Após a instalação das dependencias ser finalizada, utlize o comando `npm run start:gp` que irá iniciar o servidor de banco de dados na url http://localhost:5000/products e o projeto em si na url http://localhost:3000/.
+
+---
+
 ### Funcionalidades implementadas:
 
 - Requisição a API para obter os produtos;
